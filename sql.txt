@@ -1,0 +1,56 @@
+CREATE TABLE `article_class` (
+  `id` bigint(50) NOT NULL AUTO_INCREMENT COMMENT '类目ID',
+  `class_name` varchar(50) NOT NULL COMMENT '类目名称',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `create_by` bigint(50) DEFAULT NULL COMMENT '创建人ID',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_by` bigint(50) DEFAULT NULL COMMENT '更新人ID',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='文章类目表';
+
+
+
+CREATE TABLE `article_detail` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `class_id` bigint(20) NOT NULL COMMENT '类目ID',
+  `title` varchar(500) NOT NULL COMMENT '标题',
+  `content` longtext NOT NULL COMMENT '内容',
+  `keyword` varchar(50) DEFAULT NULL COMMENT '关键字',
+  `browse_num` int(11) NOT NULL COMMENT '浏览次数',
+  `is_top` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否置顶',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `create_by` bigint(50) DEFAULT NULL COMMENT '创建人ID',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_by` bigint(50) DEFAULT NULL COMMENT '更新人ID',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='文章详情表';
+
+
+
+CREATE TABLE `comment` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '评论ID',
+  `username` varchar(50) DEFAULT NULL COMMENT '评论者姓名',
+  `content` longtext NOT NULL COMMENT '评论内容',
+  `detail_id` bigint(20) NOT NULL COMMENT '文章ID',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='评论表';
+
+
+
+CREATE TABLE `user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `name` varchar(50) NOT NULL COMMENT '用户姓名',
+  `password` varchar(50) NOT NULL COMMENT '密码',
+  `token` varchar(255) NOT NULL,
+  `create_by` bigint(20) DEFAULT NULL COMMENT '创建人ID',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_by` bigint(20) DEFAULT NULL COMMENT '更新人ID',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+
